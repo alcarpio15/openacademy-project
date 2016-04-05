@@ -1,4 +1,6 @@
-from openerp import models, fields, api
+# -*- coding: utf-8 -*-
+
+from openerp import models, fields
 
 
 '''
@@ -8,7 +10,7 @@ The Following Module holds the means to create Models for Courses Attendance
 
 class Course(models.Model):
     '''
-    The Following Clas creates the Basic Model for a Course
+    The Following Class creates the Basic Model for a Course
     '''
     _name = 'openacademy.course'  # Model Odoo Name
 
