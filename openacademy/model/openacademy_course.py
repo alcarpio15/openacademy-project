@@ -17,3 +17,6 @@ class Course(models.Model):
     # Field reserved to identify name rec
     name = fields.Char(string='Title', required=True)
     description = fields.Text(string='Description')
+
+    responsible_id = fields.Many2one('res.users', ondelete='set null',
+                                        string="Responsible", index=True)
