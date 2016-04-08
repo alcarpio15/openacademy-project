@@ -6,5 +6,5 @@ class Partner(models.Model):
 
     instructor = fields.Boolean("Instructor",default=False)
     session_ids = fields.Many2many('openacademy.session',
-                                    string="Sessions as instructor",
+                                    string="Sessions as attendee",
                                     readonly=True)
