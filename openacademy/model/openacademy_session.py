@@ -29,10 +29,10 @@ class Session(models.Model):
                                         compute='_get_attendees_count',
                                         store=True, readonly=True)
     state = fields.Selection([
-        ('draft', "Draft"),
-        ('confirmed', "Confirmed"),
-        ('done', "Done"),
-    ], default='draft')
+                ('draft', "Draft"),
+                ('confirmed', "Confirmed"),
+                ('done', "Done"),
+            ], default='draft', readonly=True)
     active = fields.Boolean(default=True)
     color = fields.Integer()
 
