@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-14 20:39+0000\n"
-"PO-Revision-Date: 2016-04-14 16:40-0430\n"
+"POT-Creation-Date: 2016-04-14 21:56+0000\n"
+"PO-Revision-Date: 2016-04-14 17:38-0430\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -43,6 +43,12 @@ msgid ""
 msgstr ""
 "<br/>\n"
 "                                    Fecha de inicio:"
+
+#. module: openacademy
+#: code:addons/openacademy/model/openacademy_session.py:118
+#, python-format
+msgid "A session's instructor can't be an attendee"
+msgstr "Un Instructor no puede ser un asistente en su sesión."
 
 #. module: openacademy
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_session_active
@@ -104,6 +110,24 @@ msgid "Contacts"
 msgstr "Contactos"
 
 #. module: openacademy
+#: code:addons/openacademy/model/openacademy_course.py:33
+#, python-format
+msgid "Copy of {}"
+msgstr "Copia of {}"
+
+#. module: openacademy
+#: code:addons/openacademy/model/openacademy_course.py:35
+#, python-format
+msgid "Copy of {} ({})"
+msgstr "Copia of {} ({})"
+
+#. module: openacademy
+#: code:addons/openacademy/model/openacademy_course.py:31
+#, python-format
+msgid "Copy of {}%"
+msgstr "Copia of {}%"
+
+#. module: openacademy
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_session_course_id
 #: model:ir.ui.view,arch_db:openacademy.course_tree_view
 msgid "Course"
@@ -137,7 +161,7 @@ msgstr "Creado por"
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_session_create_date
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_wizard_create_date
 msgid "Created on"
-msgstr "Creado el"
+msgstr "Creado en"
 
 #. module: openacademy
 #: model:ir.ui.view,arch_db:openacademy.view_openacad_session_kanban
@@ -155,7 +179,7 @@ msgstr "Descripción"
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_session_display_name
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_wizard_display_name
 msgid "Display Name"
-msgstr "Nombre en Pantalla"
+msgstr "Nombre mostrado"
 
 #. module: openacademy
 #: selection:openacademy.session,state:0
@@ -205,6 +229,18 @@ msgid "ID"
 msgstr "ID (identificación)"
 
 #. module: openacademy
+#: code:addons/openacademy/model/openacademy_session.py:64
+#, python-format
+msgid "Incorrect 'seats' value"
+msgstr "Valor incorrecto de 'puestos'"
+
+#. module: openacademy
+#: code:addons/openacademy/model/openacademy_session.py:72
+#, python-format
+msgid "Increase seats or remove excess attendees"
+msgstr "Aumente los puestos o remueva el exceso de asistentes"
+
+#. module: openacademy
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_session_instructor_id
 #: model:ir.model.fields,field_description:openacademy.field_res_partner_instructor
 msgid "Instructor"
@@ -215,21 +251,21 @@ msgstr "Instructor"
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_session___last_update
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_wizard___last_update
 msgid "Last Modified on"
-msgstr "Última modificación hecha el"
+msgstr "Última modificación en"
 
 #. module: openacademy
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_course_write_uid
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_session_write_uid
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_wizard_write_uid
 msgid "Last Updated by"
-msgstr "Última actualización hecha por"
+msgstr "Última actualización de"
 
 #. module: openacademy
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_course_write_date
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_session_write_date
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_wizard_write_date
 msgid "Last Updated on"
-msgstr "Última actualización hecha el"
+msgstr "Última actualización en"
 
 #. module: openacademy
 #: model:ir.ui.view,arch_db:openacademy.session_form_view
@@ -388,6 +424,12 @@ msgid "The course title must be unique"
 msgstr "El título del curso debe ser único"
 
 #. module: openacademy
+#: code:addons/openacademy/model/openacademy_session.py:65
+#, python-format
+msgid "The number of available seats should not be negative"
+msgstr "El número de asistentes no debe ser negativo"
+
+#. module: openacademy
 #: sql_constraint:openacademy.course:0
 msgid "The title of the course should not be the description"
 msgstr "El título del curso no sirve como descripción"
@@ -396,6 +438,12 @@ msgstr "El título del curso no sirve como descripción"
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_course_name
 msgid "Title"
 msgstr "Título"
+
+#. module: openacademy
+#: code:addons/openacademy/model/openacademy_session.py:71
+#, python-format
+msgid "Too many attendees"
+msgstr "Demasiados asistentes"
 
 #. module: openacademy
 #: model:ir.model,name:openacademy.model_openacademy_course
