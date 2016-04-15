@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-14 22:14+0000\n"
-"PO-Revision-Date: 2016-04-14 17:46-0430\n"
+"PO-Revision-Date: 2016-04-15 09:10-0430\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -285,7 +285,7 @@ msgstr "Nombre"
 #. module: openacademy
 #: model:ir.model.fields,field_description:openacademy.field_openacademy_session_seats
 msgid "Number of seats"
-msgstr "Número de asientos"
+msgstr "Número de puestos"
 
 #. module: openacademy
 #: model:ir.ui.menu,name:openacademy.main_openacademy_menu
