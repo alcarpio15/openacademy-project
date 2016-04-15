@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-14 22:14+0000\n"
-"PO-Revision-Date: 2016-04-15 09:10-0430\n"
+"PO-Revision-Date: 2016-04-15 09:23-0430\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -433,7 +433,7 @@ msgstr "El título del curso debe ser único"
 #: code:addons/openacademy/model/openacademy_session.py:65
 #, python-format
 msgid "The number of available seats should not be negative"
-msgstr "El número de asistentes no debe ser negativo"
+msgstr "El número de puestos disponibles no debe ser negativo"
 
 #. module: openacademy
 #: sql_constraint:openacademy.course:0
