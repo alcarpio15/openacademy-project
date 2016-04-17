@@ -31,11 +31,14 @@ class Session(models.Model):
     attendees_count = fields.Integer(string="Attendees count",
                                      compute='_get_attendees_count',
                                      store=True, readonly=True)
-    state = fields.Selection([
+    state = fields.Selection(
+        [
             ('draft', "Draft"),
             ('confirmed', "Confirmed"),
             ('done', "Done"),
-        ], default='draft', readonly=True)
+        ],
+        default='draft', readonly=True
+    )
     active = fields.Boolean(default=True)
     color = fields.Integer()
 
@@ -64,7 +67,7 @@ class Session(models.Model):
         if self.seats < 0:
             warn = "The number of available seats should not be negative"
             return {
-                'warning':{
+                'warning': {
                     'title': _("Incorrect 'seats' value"),
                     'message': _(warn),
                 },
@@ -95,8 +98,9 @@ class Session(models.Model):
             if not (r.start_date and r.end_date):
                 continue
 
-            # Compute the difference between dates, but: Friday-Monday = 4 days,
-            # so add one day to get 5 days instead
+            # Compute the difference between dates,
+            # but: Friday - Monday = 4 days, so add
+            # one day to get 5 days instead
             start_date = fields.Datetime.from_string(r.start_date)
             end_date = fields.Datetime.from_string(r.end_date)
             r.duration = (end_date - start_date).days + 1
