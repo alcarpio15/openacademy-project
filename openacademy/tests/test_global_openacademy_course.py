@@ -57,7 +57,7 @@ class GlobalTestOpenAcademyCourse(TransactionCase):
         with self.assertRaisesRegexp(
                 IntegrityError,
                 'duplicate key value violates unique'
-                'constraint "openacademy_course_name_unique"'
+                ' constraint "openacademy_course_name_unique"'
         ):
             self.create_course('test1', 'test_description', None)
 
@@ -67,4 +67,3 @@ class GlobalTestOpenAcademyCourse(TransactionCase):
         '''
         course = self.env.ref('openacademy.course0')
         course.copy()
-        # print "course_id", course_id
