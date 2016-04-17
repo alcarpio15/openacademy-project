@@ -16,8 +16,6 @@ class GlobalTestOpenAcademySession(TransactionCase):
         self.partner_vauxoo = self.env.ref('base.res_partner_23')
         self.course = self.env.ref('openacademy.course1')
         self.partner_attende = self.env.ref('base.res_partner_5')
- 
-    # Generic methods
 
     # Test methods
     def test_10_instructor_is_attende(self):
@@ -56,7 +54,7 @@ class GlobalTestOpenAcademySession(TransactionCase):
         session_test.signal_workflow('button_confirm')
         self.assertEqual(session_test.state, 'confirmed',
                          "Signal confirm don't work fine!")
-        
+
         # Change next state and check it
         session_test.signal_workflow('button_done')
         self.assertEqual(session_test.state, 'done',

@@ -14,9 +14,9 @@ class Session(models.Model):
     instructor_id = fields.Many2one(
         'res.partner', string="Instructor",
         domain=[
-            '|', ("instructor", "=", True ), '|',
+            '|', ("instructor", "=", True), '|',
             ('category_id.name', 'ilike', "Teacher"),
-            ('category_id.name','ilike', "Maestro"),
+            ('category_id.name', 'ilike', "Maestro"),
         ]
     )
     course_id = fields.Many2one('openacademy.course', ondelete='cascade',
@@ -32,10 +32,10 @@ class Session(models.Model):
                                      compute='_get_attendees_count',
                                      store=True, readonly=True)
     state = fields.Selection([
-                              ('draft', "Draft"),
-                              ('confirmed', "Confirmed"),
-                              ('done', "Done"),
-                             ], default='draft', readonly=True)
+            ('draft', "Draft"),
+            ('confirmed', "Confirmed"),
+            ('done', "Done"),
+        ], default='draft', readonly=True)
     active = fields.Boolean(default=True)
     color = fields.Integer()
 
@@ -59,7 +59,7 @@ class Session(models.Model):
         else:
             self.taken_seats = 100.0 * len(self.attendee_ids) / self.seats
 
-    @api.onchange('seats','attendee_ids')
+    @api.onchange('seats', 'attendee_ids')
     def _verify_valid_seats(self):
         if self.seats < 0:
             warn = "The number of available seats should not be negative"
@@ -71,7 +71,7 @@ class Session(models.Model):
             }
         if self.seats < len(self.attendee_ids):
             return {
-                'warning':{
+                'warning': {
                     'title': _("Too many attendees"),
                     'message': _("Increase seats or remove excess attendees"),
                 },
@@ -116,7 +116,7 @@ class Session(models.Model):
             r.attendees_count = len(r.attendee_ids)
 
     @api.one
-    @api.constrains('instructor_id','attendee_ids')
+    @api.constrains('instructor_id', 'attendee_ids')
     def _check_instructor_not_in_attendees(self):
         if self.instructor_id and self.instructor_id in self.attendee_ids:
             raise exceptions.ValidationError(
