@@ -19,9 +19,9 @@ class Course(models.Model):
     description = fields.Text(string='Description')
 
     responsible_id = fields.Many2one('res.users', ondelete='set null',
-                                        string="Responsible", index=True)
+                                     string="Responsible", index=True)
     session_ids = fields.One2many('openacademy.session',
-                                    'course_id', string="Sessions")
+                                  'course_id', string="Sessions")
 
     @api.multi
     def copy(self, default=None):
@@ -30,9 +30,9 @@ class Course(models.Model):
         copied_count = self.search_count(
             [('name', '=like', _(u"Copy of {}%").format(self.name))])
         if not copied_count:
-            new_name = _( u"Copy of {}").format(self.name)
+            new_name = _(u"Copy of {}").format(self.name)
         else:
-            new_name = _( u"Copy of {} ({})").format(self.name, copied_count)
+            new_name = _(u"Copy of {} ({})").format(self.name, copied_count)
 
         default['name'] = new_name
         return super(Course, self).copy(default)
@@ -44,5 +44,5 @@ class Course(models.Model):
 
         ('name_unique',
          'UNIQUE(name)',
-        "The course title must be unique"),
+         "The course title must be unique"),
     ]

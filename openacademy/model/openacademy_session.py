@@ -11,29 +11,31 @@ class Session(models.Model):
     start_date = fields.Date(default=fields.Date.today)
     duration = fields.Float(digit=(), help="Duration in days.")
     seats = fields.Integer(string="Number of seats")
-    instructor_id = fields.Many2one('res.partner', string="Instructor",
-                                    domain=['|',
-                                    ("instructor","=",True), '|',
-                                    ('category_id.name', 'ilike', "Teacher"),
-                                    ('category_id.name', 'ilike', "Maestro"),
-                                    ])
+    instructor_id = fields.Many2one(
+        'res.partner', string="Instructor",
+        domain=[
+            '|', ("instructor", "=", True ), '|',
+            ('category_id.name', 'ilike', "Teacher"),
+            ('category_id.name','ilike', "Maestro"),
+        ]
+    )
     course_id = fields.Many2one('openacademy.course', ondelete='cascade',
-                                    string="Course", required=True)
+                                string="Course", required=True)
     attendee_ids = fields.Many2many('res.partner', string="Attendees")
 
     taken_seats = fields.Float(string="Taken seats", compute='_taken_seats')
     end_date = fields.Date(string="End Date", store=True,
-                            compute='_get_end_date', inverse='_set_end_date')
+                           compute='_get_end_date', inverse='_set_end_date')
     hours = fields.Float(string="Duration in hours",
                          compute='_get_hours', inverse='_set_hours')
     attendees_count = fields.Integer(string="Attendees count",
-                                        compute='_get_attendees_count',
-                                        store=True, readonly=True)
+                                     compute='_get_attendees_count',
+                                     store=True, readonly=True)
     state = fields.Selection([
-                ('draft', "Draft"),
-                ('confirmed', "Confirmed"),
-                ('done', "Done"),
-            ], default='draft', readonly=True)
+                              ('draft', "Draft"),
+                              ('confirmed', "Confirmed"),
+                              ('done', "Done"),
+                             ], default='draft', readonly=True)
     active = fields.Boolean(default=True)
     color = fields.Integer()
 
@@ -60,10 +62,11 @@ class Session(models.Model):
     @api.onchange('seats','attendee_ids')
     def _verify_valid_seats(self):
         if self.seats < 0:
+            warn = "The number of available seats should not be negative"
             return {
                 'warning':{
                     'title': _("Incorrect 'seats' value"),
-                    'message': _("The number of available seats should not be negative"),
+                    'message': _(warn),
                 },
             }
         if self.seats < len(self.attendee_ids):
@@ -92,7 +95,7 @@ class Session(models.Model):
             if not (r.start_date and r.end_date):
                 continue
 
-            # Compute the difference between dates, but: Friday - Monday = 4 days,
+            # Compute the difference between dates, but: Friday-Monday = 4 days,
             # so add one day to get 5 days instead
             start_date = fields.Datetime.from_string(r.start_date)
             end_date = fields.Datetime.from_string(r.end_date)
@@ -116,4 +119,6 @@ class Session(models.Model):
     @api.constrains('instructor_id','attendee_ids')
     def _check_instructor_not_in_attendees(self):
         if self.instructor_id and self.instructor_id in self.attendee_ids:
-            raise exceptions.ValidationError(_("A session's instructor can't be an attendee"))
+            raise exceptions.ValidationError(
+                _("A session's instructor can't be an attendee")
+            )
